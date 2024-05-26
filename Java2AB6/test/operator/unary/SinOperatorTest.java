@@ -11,11 +11,37 @@ import org.junit.jupiter.api.Test;
  */
 class SinOperatorTest
 {
+   SinOperator sin = new SinOperator();
+   double delta = 0.0001; // Toleranz
 
    @Test
-   void test()
+   void testFunktionUnten()
    {
-      fail("Not yet implemented");
+      assertEquals(0, sin.eval(Math.toRadians(-Math.PI*10E6)), delta);
+      assertEquals(0, sin.eval(Math.toRadians(-Math.PI*10E6+Math.PI)), delta);
+      assertEquals(0, sin.eval(Math.toRadians(-Math.PI*10E6+(2*Math.PI))), delta);
+   }
+
+   @Test
+   void testFunktionMitte()
+   {
+      assertEquals(0, sin.eval(Math.toRadians(-180)), delta);
+      assertEquals(-0.5, sin.eval(Math.toRadians(-150)), delta);
+      assertEquals(-1, sin.eval(Math.toRadians(-90)), delta);
+      assertEquals(-0.5, sin.eval(Math.toRadians(-30)), delta);
+      assertEquals(0, sin.eval(Math.toRadians(0)), delta);
+      assertEquals(0.5, sin.eval(Math.toRadians(30)), delta);
+      assertEquals(1, sin.eval(Math.toRadians(90)), delta);
+      assertEquals(0.5, sin.eval(Math.toRadians(150)), delta);
+      assertEquals(0, sin.eval(Math.toRadians(180)), delta);
+   }
+
+   @Test
+   void testFunktionOben()
+   {
+      assertEquals(0, sin.eval(Math.toRadians(Math.PI*10E6)), delta);
+      assertEquals(0, sin.eval(Math.toRadians(Math.PI*10E6+Math.PI)), delta);
+      assertEquals(0, sin.eval(Math.toRadians(Math.PI*10E6+(2*Math.PI))), delta);
    }
 
 }
