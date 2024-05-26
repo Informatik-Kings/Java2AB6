@@ -18,9 +18,9 @@ class CosOperatorTest
    @Test
    void testFunktionUnten()
    {
-      assertEquals(1, cos.eval(-Math.PI*10E6));
-      assertEquals(-1, cos.eval(-Math.PI*10E6+Math.PI));
-      assertEquals(1, cos.eval(-Math.PI*10E6+(2*Math.PI)));
+      assertEquals(1, cos.eval(-Math.PI*1E307));
+      assertEquals(-1, cos.eval(-Math.PI*1E307+Math.PI));
+      assertEquals(1, cos.eval(-Math.PI*1E307+(2*Math.PI)));
    }
 
    @Test
@@ -40,9 +40,9 @@ class CosOperatorTest
    @Test
    void testFunktionOben()
    {
-      assertEquals(1, cos.eval((Math.PI*10E6)));
-      assertEquals(-1, cos.eval(Math.PI*10E6+Math.PI));
-      assertEquals(1, cos.eval(Math.PI*10E6+(2*Math.PI)));
+      assertEquals(1, cos.eval((Math.PI*1E307)));
+      assertEquals(-1, cos.eval(Math.PI*1E307-Math.PI));
+      assertEquals(1, cos.eval(Math.PI*1E307-(2*Math.PI)));
    }
 
 }

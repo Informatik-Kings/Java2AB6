@@ -24,7 +24,7 @@ class SqrtOperatorTest
          @Override
          public void execute() throws Throwable
          {
-            sqrt.eval(Integer.MIN_VALUE);
+            sqrt.eval(-Double.MAX_VALUE);
          }
       });
 
@@ -34,7 +34,7 @@ class SqrtOperatorTest
          @Override
          public void execute() throws Throwable
          {
-            sqrt.eval(Integer.MIN_VALUE + 1);
+            sqrt.eval(-Double.MAX_VALUE + 1);
          }
       });
 
@@ -44,7 +44,7 @@ class SqrtOperatorTest
          @Override
          public void execute() throws Throwable
          {
-            sqrt.eval(Integer.MIN_VALUE + 2);
+            sqrt.eval(-Double.MAX_VALUE + 2);
          }
       });
    }
@@ -95,17 +95,17 @@ class SqrtOperatorTest
    @Test
    void testFunktionMitte()
    {
-      assertEquals(23170, sqrt.eval(23170*23170));
-      assertEquals(23171, sqrt.eval(23171*23171));
-      assertEquals(23172, sqrt.eval(23172*23172));
+      assertEquals(1E149, sqrt.eval(1E149*1E149));
+      assertEquals(1E150, sqrt.eval(1E150*1E150));
+      assertEquals(1E151, sqrt.eval(1E151*1E151));
    }
    
    @Test
    void testFunktionOben()
    {
-      assertEquals(46338, sqrt.eval(46338*46338));
-      assertEquals(46339, sqrt.eval(46339*46339));
-      assertEquals(46340, sqrt.eval(46340*46340));
+      assertEquals(1E152, sqrt.eval(1E152*1E152));
+      assertEquals(1E153, sqrt.eval(1E153*1E153));
+      assertEquals(1E154, sqrt.eval(1E154*1E154));
    }
 
 }

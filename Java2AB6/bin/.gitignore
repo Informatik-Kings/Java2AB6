@@ -1,1 +1,7 @@
+/application/
+/exception/
+/junit-platform.properties
+/module-info.class
 /operator/
+/stack/
+/upn/

@@ -19,9 +19,9 @@ class TanOperatorTest
    @Test
    void testFunktionUnten()
    {
-      assertEquals(0, tan.eval(-Math.PI*10E6), delta);
-      assertEquals(0, tan.eval(-Math.PI*10E6+Math.PI), delta);
-      assertEquals(0, tan.eval(-Math.PI*10E6+(2*Math.PI)), delta);
+      assertEquals(0, tan.eval(-Math.PI*1E307), delta);
+      assertEquals(0, tan.eval(-Math.PI*1E307+Math.PI), delta);
+      assertEquals(0, tan.eval(-Math.PI*1E307+(2*Math.PI)), delta);
    }
 
    @Test
@@ -39,9 +39,9 @@ class TanOperatorTest
    @Test
    void testFunktionOben()
    {
-      assertEquals(0, tan.eval((Math.PI*10E6)), delta);
-      assertEquals(0, tan.eval(Math.PI*10E6+Math.PI), delta);
-      assertEquals(0, tan.eval(Math.PI*10E6+(2*Math.PI)), delta);
+      assertEquals(0, tan.eval((Math.PI*1E307)), delta);
+      assertEquals(0, tan.eval(Math.PI*1E307-Math.PI), delta);
+      assertEquals(0, tan.eval(Math.PI*1E307-(2*Math.PI)), delta);
    }
    
    @Test

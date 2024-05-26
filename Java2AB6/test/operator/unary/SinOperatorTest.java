@@ -17,9 +17,9 @@ class SinOperatorTest
    @Test
    void testFunktionUnten()
    {
-      assertEquals(0, sin.eval(-Math.PI*10E6), delta);
-      assertEquals(0, sin.eval(-Math.PI*10E6+Math.PI), delta);
-      assertEquals(0, sin.eval(-Math.PI*10E6+(2*Math.PI)), delta);
+      assertEquals(0, sin.eval(-Math.PI*1E307), delta);
+      assertEquals(0, sin.eval(-Math.PI*1E307+Math.PI), delta);
+      assertEquals(0, sin.eval(-Math.PI*1E307+(2*Math.PI)), delta);
    }
 
    @Test
@@ -39,9 +39,9 @@ class SinOperatorTest
    @Test
    void testFunktionOben()
    {
-      assertEquals(0, sin.eval(Math.PI*10E6), delta);
-      assertEquals(0, sin.eval(Math.PI*10E6+Math.PI), delta);
-      assertEquals(0, sin.eval(Math.PI*10E6+(2*Math.PI)), delta);
+      assertEquals(0, sin.eval(Math.PI*1E307), delta);
+      assertEquals(0, sin.eval(Math.PI*1E307-Math.PI), delta);
+      assertEquals(0, sin.eval(Math.PI*1E307-(2*Math.PI)), delta);
    }
 
 }

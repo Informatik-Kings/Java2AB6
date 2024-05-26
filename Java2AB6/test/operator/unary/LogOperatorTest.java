@@ -23,7 +23,7 @@ class LogOperatorTest
          @Override
          public void execute() throws Throwable
          {
-            log.eval(Integer.MIN_VALUE);
+            log.eval(-Double.MAX_VALUE);
          }
       });
 
@@ -33,7 +33,7 @@ class LogOperatorTest
          @Override
          public void execute() throws Throwable
          {
-            log.eval(Integer.MIN_VALUE + 1);
+            log.eval(-Double.MAX_VALUE + 1);
          }
       });
 
@@ -43,7 +43,7 @@ class LogOperatorTest
          @Override
          public void execute() throws Throwable
          {
-            log.eval(Integer.MIN_VALUE + 2);
+            log.eval(-Double.MAX_VALUE + 2);
          }
       });
    }
@@ -94,17 +94,17 @@ class LogOperatorTest
    @Test
    void testFunktionMitte()
    {
-      assertEquals(19, log.eval(Math.exp(19)));
-      assertEquals(20, log.eval(Math.exp(20)));
-      assertEquals(21, log.eval(Math.exp(21)));
+      assertEquals(304, log.eval(Math.exp(304)));
+      assertEquals(305, log.eval(Math.exp(305)));
+      assertEquals(306, log.eval(Math.exp(306)));
    }
 
    @Test
    void testFunktionOben()
    {
-      assertEquals(21.3, log.eval(Math.exp(21.3)));
-      assertEquals(21.35, log.eval(Math.exp(21.35)));
-      assertEquals(21.4, log.eval(Math.exp(21.4)));
+      assertEquals(306.8, log.eval(Math.exp(306.8)));
+      assertEquals(306.9, log.eval(Math.exp(306.9)));
+      assertEquals(307, log.eval(Math.exp(307)));
    }
 
 }

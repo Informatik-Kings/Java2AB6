@@ -18,9 +18,9 @@ class ReciprocalOperatorTest
    @Test
    void testFunktionUnten()
    {
-      assertEquals(1/(double)Integer.MIN_VALUE, rec.eval(Integer.MIN_VALUE));
-      assertEquals(1/(double)(Integer.MIN_VALUE+1), rec.eval(Integer.MIN_VALUE+1));
-      assertEquals(1/(double)(Integer.MIN_VALUE+2), rec.eval(Integer.MIN_VALUE+2));
+      assertEquals(1/-Double.MAX_VALUE, rec.eval(-Double.MAX_VALUE));
+      assertEquals(1/(-Double.MAX_VALUE+1), rec.eval(-Double.MAX_VALUE+1));
+      assertEquals(1/(-Double.MAX_VALUE+2), rec.eval(-Double.MAX_VALUE+2));
    }
    
    @Test
@@ -119,9 +119,9 @@ class ReciprocalOperatorTest
    
    void testFunktionOben()
    {
-      assertEquals(1/(double)(Integer.MAX_VALUE-2), rec.eval(Integer.MAX_VALUE-2));
-      assertEquals(1/(double)(Integer.MAX_VALUE-1), rec.eval(Integer.MAX_VALUE-1));
-      assertEquals(1/(double)Integer.MAX_VALUE, rec.eval(Integer.MAX_VALUE));
+      assertEquals(1/(Double.MAX_VALUE-2), rec.eval(Double.MAX_VALUE-2));
+      assertEquals(1/(Double.MAX_VALUE-1), rec.eval(Double.MAX_VALUE-1));
+      assertEquals(1/Double.MAX_VALUE, rec.eval(Double.MAX_VALUE));
    }
 
 }
