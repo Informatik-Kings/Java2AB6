@@ -25,7 +25,13 @@ public abstract class BinaryOperator implements Operator
          throw new IllegalUserInputException("BinaryOperator: Binäre Operation benötigt mindestens zwei Argumente!");
       }
       
-      stack.push(eval(stack.pop(), stack.pop()));
+      Double result = eval(stack.pop(), stack.pop());
+      
+      if(result.isInfinite()) {
+         throw new IllegalUserInputException("BinaryOperator: Mathematischer Fehler!");
+      }
+      
+      stack.push(result);
    }
    
    protected abstract double eval(double x, double y);
