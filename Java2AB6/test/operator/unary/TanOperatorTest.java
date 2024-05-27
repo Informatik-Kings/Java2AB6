@@ -3,7 +3,6 @@ package operator.unary;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
 /**
  * Testet den Tangens-Operator.
@@ -15,6 +14,22 @@ class TanOperatorTest
 
    TanOperator tan = new TanOperator();
    double delta = 0.0001; // Toleranz
+   
+   @Test
+   void testGrenzeNullNegativ()
+   {
+      assertEquals(-Double.MIN_VALUE, tan.eval(-Double.MIN_VALUE));
+      assertEquals(-Double.MIN_VALUE*2, tan.eval(-Double.MIN_VALUE*2));
+      assertEquals(-Double.MIN_VALUE*3, tan.eval(-Double.MIN_VALUE*3));
+   }
+   
+   @Test
+   void testGrenzeNullPositiv()
+   {
+      assertEquals(Double.MIN_VALUE, tan.eval(Double.MIN_VALUE));
+      assertEquals(Double.MIN_VALUE*2, tan.eval(Double.MIN_VALUE*2));
+      assertEquals(Double.MIN_VALUE*3, tan.eval(Double.MIN_VALUE*3));
+   }
 
    @Test
    void testFunktionUnten()
@@ -45,46 +60,8 @@ class TanOperatorTest
    }
    
    @Test
-   void testUngueltigerWert()
+   void testSonderfall()
    {
-      assertThrows(IllegalArgumentException.class, new Executable()
-      {
-
-         @Override
-         public void execute() throws Throwable
-         {
-            tan.eval(Math.toRadians(-270));
-         }
-      });
-
-      assertThrows(IllegalArgumentException.class, new Executable()
-      {
-
-         @Override
-         public void execute() throws Throwable
-         {
-            tan.eval(Math.toRadians(-90));
-         }
-      });
-
-      assertThrows(IllegalArgumentException.class, new Executable()
-      {
-
-         @Override
-         public void execute() throws Throwable
-         {
-            tan.eval(Math.toRadians(90));
-         }
-      });
-      
-      assertThrows(IllegalArgumentException.class, new Executable()
-      {
-
-         @Override
-         public void execute() throws Throwable
-         {
-            tan.eval(Math.toRadians(270));
-         }
-      });
+      assertEquals(Double.NaN, tan.eval(Double.NaN));
    }
 }

@@ -84,12 +84,53 @@ class SqrtOperatorTest
    }
    
    @Test
-   void testFunktionMitteOben()
+   void testGrenzeNullNegativ()
+   {
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            sqrt.eval(-Double.MIN_VALUE);
+         }
+      });
+
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            sqrt.eval(-Double.MIN_VALUE*2);
+         }
+      });
+
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            sqrt.eval(-Double.MIN_VALUE*3);
+         }
+      });
+   }
+   
+   @Test
+   void testGrenzeNullPositiv()
+   {
+      assertEquals(1.0, sqrt.eval(Double.MIN_VALUE+1));
+      assertEquals(2.0, sqrt.eval(Double.MIN_VALUE+4));
+      assertEquals(3.0, sqrt.eval(Double.MIN_VALUE+9));
+   }
+   
+   @Test
+   void testFunktionUnten()
    {
       assertEquals(0, sqrt.eval(0));
       assertEquals(1, sqrt.eval(1));
       assertEquals(2, sqrt.eval(4));
-      assertEquals(3, sqrt.eval(9));
    }
    
    @Test
@@ -106,6 +147,12 @@ class SqrtOperatorTest
       assertEquals(1E152, sqrt.eval(1E152*1E152));
       assertEquals(1E153, sqrt.eval(1E153*1E153));
       assertEquals(1E154, sqrt.eval(1E154*1E154));
+   }
+   
+   @Test
+   void testSonderfall()
+   {
+      assertEquals(Double.NaN, sqrt.eval(Double.NaN));
    }
 
 }

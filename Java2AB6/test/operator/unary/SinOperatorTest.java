@@ -13,6 +13,22 @@ class SinOperatorTest
 {
    SinOperator sin = new SinOperator();
    double delta = 0.0001; // Toleranz
+   
+   @Test
+   void testGrenzeNullNegativ()
+   {
+      assertEquals(-Double.MIN_VALUE, sin.eval(-Double.MIN_VALUE));
+      assertEquals(-Double.MIN_VALUE*2, sin.eval(-Double.MIN_VALUE*2));
+      assertEquals(-Double.MIN_VALUE*3, sin.eval(-Double.MIN_VALUE*3));
+   }
+   
+   @Test
+   void testGrenzeNullPositiv()
+   {
+      assertEquals(Double.MIN_VALUE, sin.eval(Double.MIN_VALUE));
+      assertEquals(Double.MIN_VALUE*2, sin.eval(Double.MIN_VALUE*2));
+      assertEquals(Double.MIN_VALUE*3, sin.eval(Double.MIN_VALUE*3));
+   }
 
    @Test
    void testFunktionUnten()
@@ -42,6 +58,12 @@ class SinOperatorTest
       assertEquals(0, sin.eval(Math.PI*1E307), delta);
       assertEquals(0, sin.eval(Math.PI*1E307-Math.PI), delta);
       assertEquals(0, sin.eval(Math.PI*1E307-(2*Math.PI)), delta);
+   }
+   
+   @Test
+   void testSonderfall()
+   {
+      assertEquals(Double.NaN, sin.eval(Double.NaN));
    }
 
 }
