@@ -64,6 +64,74 @@ class ReciprocalOperatorTest
          }
       });
    }
+   
+   @Test
+   void testGrenzeNullNegativ()
+   {
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(-Double.MIN_VALUE);
+         }
+      });
+
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(-Double.MIN_VALUE*2);
+         }
+      });
+
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(-Double.MIN_VALUE*3);
+         }
+      });
+   }
+   
+   @Test
+   void testGrenzeNullPositiv()
+   {
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(Double.MIN_VALUE);
+         }
+      });
+
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(Double.MIN_VALUE*2);
+         }
+      });
+
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(Double.MIN_VALUE*3);
+         }
+      });
+   }
 
    @Test
    void testUebergangMitteOben()
@@ -122,6 +190,12 @@ class ReciprocalOperatorTest
       assertEquals(1/(Double.MAX_VALUE-2), rec.eval(Double.MAX_VALUE-2));
       assertEquals(1/(Double.MAX_VALUE-1), rec.eval(Double.MAX_VALUE-1));
       assertEquals(1/Double.MAX_VALUE, rec.eval(Double.MAX_VALUE));
+   }
+   
+   @Test
+   void testSonderfall()
+   {
+      assertEquals(Double.NaN, rec.eval(Double.NaN));
    }
 
 }

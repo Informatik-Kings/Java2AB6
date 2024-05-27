@@ -14,6 +14,22 @@ class CosOperatorTest
 
    CosOperator cos = new CosOperator();
    double delta = 0.0001; // Toleranz
+   
+   @Test
+   void testGrenzeNullNegativ()
+   {
+      assertEquals(1.0, cos.eval(-Double.MIN_VALUE));
+      assertEquals(1.0, cos.eval(-Double.MIN_VALUE*2));
+      assertEquals(1.0, cos.eval(-Double.MIN_VALUE*3));
+   }
+   
+   @Test
+   void testGrenzeNullPositiv()
+   {
+      assertEquals(1.0, cos.eval(Double.MIN_VALUE));
+      assertEquals(1.0, cos.eval(Double.MIN_VALUE*2));
+      assertEquals(1.0, cos.eval(Double.MIN_VALUE*3));
+   }
 
    @Test
    void testFunktionUnten()
@@ -43,6 +59,12 @@ class CosOperatorTest
       assertEquals(1, cos.eval((Math.PI*1E307)));
       assertEquals(-1, cos.eval(Math.PI*1E307-Math.PI));
       assertEquals(1, cos.eval(Math.PI*1E307-(2*Math.PI)));
+   }
+   
+   @Test
+   void testSonderfall()
+   {
+      assertEquals(Double.NaN, cos.eval(Double.NaN));
    }
 
 }
