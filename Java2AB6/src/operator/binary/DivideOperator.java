@@ -20,8 +20,13 @@ public class DivideOperator extends BinaryOperator
          throw new IllegalUserInputException("DivideOperator: Division durch 0!");
       }
       
-      return y / x;
+      Double result = y / x;
       
+      if(result.isInfinite()) {
+         throw new IllegalUserInputException("DivideOperator: Mathematischer Fehler!");
+      }
+      
+      return result;
    }
 
 }

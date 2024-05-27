@@ -1,5 +1,7 @@
 package operator.binary;
 
+import exception.IllegalUserInputException;
+
 /**
  * Stellt die Addition gekapselt in einer Klasse zu Verfügung.
  *
@@ -14,7 +16,13 @@ public class AddOperator extends BinaryOperator
    @Override
    protected double eval(double x, double y)
    {
-      return x + y;
+      Double result = x + y;
+      
+      if(result.isInfinite()) {
+         throw new IllegalUserInputException("AddOperator: Mathematischer Fehler!");
+      }
+      
+      return result;
    }
 
 }

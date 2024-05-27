@@ -1,5 +1,7 @@
 package operator.binary;
 
+import exception.IllegalUserInputException;
+
 /**
  * Stellt die Multiplikation gekapselt in einer Klasse zu Verfügung.
  *
@@ -14,7 +16,14 @@ public class MultiplyOperator extends BinaryOperator
    @Override
    protected double eval(double x, double y)
    {
-      return x * y;
+      Double result = x * y;
+      
+      if(result.isInfinite()) {
+         throw new IllegalUserInputException("MultiplyOperator: Mathematischer Fehler!");
+      }
+      
+      return result;
+      
    }
 
 }

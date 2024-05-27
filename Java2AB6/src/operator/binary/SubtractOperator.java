@@ -1,5 +1,7 @@
 package operator.binary;
 
+import exception.IllegalUserInputException;
+
 /**
  * Stellt die Subtraktion gekapselt in einer Klasse zu Verfügung.
  *
@@ -14,7 +16,13 @@ public class SubtractOperator extends BinaryOperator
    @Override
    protected double eval(double x, double y)
    {
-      return y - x;
+      Double result = y - x;
+      
+      if(result.isInfinite()) {
+         throw new IllegalUserInputException("SubtractOperator: Mathematischer Fehler!");
+      }
+      
+      return result;
    }
 
 }
