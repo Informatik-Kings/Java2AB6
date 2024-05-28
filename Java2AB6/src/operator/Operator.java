@@ -1,5 +1,7 @@
 package operator;
 
+import java.math.BigDecimal;
+
 import stack.Stack;
 
 /**
@@ -10,6 +12,7 @@ import stack.Stack;
 public interface Operator
 {
    public final static double MINIMUM = 1E-12;
+   public final static BigDecimal MANTISSA_MAX_VALUE = BigDecimal.valueOf(Math.pow(2, Double.PRECISION));
    /**
     * 
     * Stellt eine Berechnungs-Methode für UPN bereit.

@@ -1,5 +1,7 @@
 package operator.binary;
 
+import java.math.BigDecimal;
+
 import exception.IllegalUserInputException;
 
 /**
@@ -20,13 +22,24 @@ public class DivideOperator extends BinaryOperator
          throw new IllegalUserInputException("DivideOperator: Division durch 0!");
       }
       
-      Double result = y / x;
-      
-      if(result.isInfinite()) {
-         throw new IllegalUserInputException("DivideOperator: Mathematischer Fehler!");
+      if(!Double.isFinite(x) || !Double.isFinite(y)) {
+         throw new IllegalUserInputException("DivideOperator: Zahlen müssen endlich sein.");
       }
       
-      return result;
+      if(Math.abs(x) >= MANTISSA_MAX_VALUE.doubleValue() || Math.abs(y) >= MANTISSA_MAX_VALUE.doubleValue()) {         
+         throw new IllegalUserInputException(
+               "DivideOperator: Zahlen dürfen höchstens (2^53)-1 ins positive oder negative sein.");
+      }
+      
+      // Ergebnis vorher überprüfen, ob es im Wertebereich liegt
+      BigDecimal a = BigDecimal.valueOf(x);
+      BigDecimal b = BigDecimal.valueOf(y);
+      BigDecimal result = b.divide(a);
+      if (result.abs().compareTo(MANTISSA_MAX_VALUE) >= 0) {         
+         throw new IllegalUserInputException("DivideOperator: Ergebnis darf höchstens (2^53)-1 sein.");
+      }
+      
+      return y / x;
    }
 
 }

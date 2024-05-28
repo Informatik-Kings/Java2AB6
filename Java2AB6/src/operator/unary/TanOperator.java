@@ -20,6 +20,13 @@ public class TanOperator extends UnaryOperator
       if(Math.abs(Math.cos(x)) < MINIMUM) {
          throw new IllegalUserInputException("TanOperator: Tangens an diesem Punkt nicht definiert!");
       }
+      if(!Double.isFinite(x)) {
+         throw new IllegalUserInputException("TanOperator: Ungültiger Wert!");
+      }
+      if(Math.abs(x) >= MANTISSA_MAX_VALUE.doubleValue()) {         
+         throw new IllegalUserInputException(
+               "TanOperator: Zahlen dürfen höchstens (2^53)-1 ins positive oder negative sein.");
+      }
       return Math.tan(x);
    }
 

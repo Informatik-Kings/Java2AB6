@@ -1,5 +1,9 @@
 package operator.binary;
 
+import java.math.BigDecimal;
+
+import exception.IllegalUserInputException;
+
 /**
  * Stellt die Exponentialrechnung gekapselt in einer Klasse zu Verfügung.
  *
@@ -14,6 +18,28 @@ public class PowOperator extends BinaryOperator
    @Override
    protected double eval(double x, double y)
    {
+      if(!Double.isFinite(x) || !Double.isFinite(y)) {
+         throw new IllegalUserInputException("PowOperator: Zahlen müssen endlich sein.");
+      }
+      
+      if(Math.abs(x) >= MANTISSA_MAX_VALUE.doubleValue() || Math.abs(y) >= MANTISSA_MAX_VALUE.doubleValue()) {         
+         throw new IllegalUserInputException(
+               "PowOperator: Zahlen dürfen höchstens (2^53)-1 ins positive oder negative sein.");
+      }
+      
+      // Ergebnis vorher überprüfen, ob es im Wertebereich liegt      
+      BigDecimal b = BigDecimal.valueOf(y);
+      BigDecimal result = null;
+      if(x < 0) {
+         //y^-x == 1/y^x
+         result = BigDecimal.ONE.divide(b.pow((int)Math.floor(Math.abs(x))));
+      } else {
+         result = b.pow((int)Math.floor(x));
+      }
+      if (result.abs().compareTo(MANTISSA_MAX_VALUE) >= 0) {         
+         throw new IllegalUserInputException("PowOperator: Ergebnis darf höchstens (2^53)-1 sein.");
+      }
+      
       return Math.pow(y, x);
    }
 
