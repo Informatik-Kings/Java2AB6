@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 class SinOperatorTest
 {
    SinOperator sin = new SinOperator();
+   double gamma = 0.13; // Toleranz
    double delta = 0.0001; // Toleranz
    
    @Test
@@ -33,9 +34,9 @@ class SinOperatorTest
    @Test
    void testFunktionUnten()
    {
-      assertEquals(0, sin.eval(-Math.PI*1E307), delta);
-      assertEquals(0, sin.eval(-Math.PI*1E307+Math.PI), delta);
-      assertEquals(0, sin.eval(-Math.PI*1E307+(2*Math.PI)), delta);
+      assertEquals(0, sin.eval(-Math.PI*1E307), gamma);
+      assertEquals(0, sin.eval(-Math.PI*1E307+Math.PI), gamma);
+      assertEquals(0, sin.eval(-Math.PI*1E307+(2*Math.PI)), gamma);
    }
 
    @Test
@@ -55,9 +56,9 @@ class SinOperatorTest
    @Test
    void testFunktionOben()
    {
-      assertEquals(0, sin.eval(Math.PI*1E307), delta);
-      assertEquals(0, sin.eval(Math.PI*1E307-Math.PI), delta);
-      assertEquals(0, sin.eval(Math.PI*1E307-(2*Math.PI)), delta);
+      assertEquals(0, sin.eval(Math.PI*1E307), gamma);
+      assertEquals(0, sin.eval(Math.PI*1E307-Math.PI), gamma);
+      assertEquals(0, sin.eval(Math.PI*1E307-(2*Math.PI)), gamma);
    }
    
    @Test

@@ -128,9 +128,9 @@ class LogOperatorTest
    @Test
    void testFunktionUnten()
    {
-      assertEquals(-10, log.eval(Math.exp(-10)));
-      assertEquals(-100, log.eval(Math.exp(-100)));
-      assertEquals(-200, log.eval(Math.exp(-200)));
+      assertEquals(-708.8, log.eval(Math.exp(-708.8)));
+      assertEquals(-708.9, log.eval(Math.exp(-708.9)));
+      assertEquals(-709, log.eval(Math.exp(-709)));
    }
 
    @Test
@@ -144,9 +144,9 @@ class LogOperatorTest
    @Test
    void testFunktionOben()
    {
-      assertEquals(306.8, log.eval(Math.exp(306.8)));
-      assertEquals(306.9, log.eval(Math.exp(306.9)));
-      assertEquals(307, log.eval(Math.exp(307)));
+      assertEquals(708.8, log.eval(Math.exp(708.8)));
+      assertEquals(708.9, log.eval(Math.exp(708.9)));
+      assertEquals(709, log.eval(Math.exp(709)));
    }
    
    @Test

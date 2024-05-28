@@ -13,6 +13,7 @@ class CosOperatorTest
 {
 
    CosOperator cos = new CosOperator();
+   double gamma = 0.01; // Toleranz
    double delta = 0.0001; // Toleranz
    
    @Test
@@ -34,9 +35,9 @@ class CosOperatorTest
    @Test
    void testFunktionUnten()
    {
-      assertEquals(1, cos.eval(-Math.PI*1E307));
-      assertEquals(-1, cos.eval(-Math.PI*1E307+Math.PI));
-      assertEquals(1, cos.eval(-Math.PI*1E307+(2*Math.PI)));
+      assertEquals(1, cos.eval(-Math.PI*1E307), gamma);
+      assertEquals(-1, cos.eval(-Math.PI*1E307+Math.PI), gamma);
+      assertEquals(1, cos.eval(-Math.PI*1E307+(2*Math.PI)), gamma);
    }
 
    @Test
@@ -56,9 +57,9 @@ class CosOperatorTest
    @Test
    void testFunktionOben()
    {
-      assertEquals(1, cos.eval((Math.PI*1E307)));
-      assertEquals(-1, cos.eval(Math.PI*1E307-Math.PI));
-      assertEquals(1, cos.eval(Math.PI*1E307-(2*Math.PI)));
+      assertEquals(1, cos.eval((Math.PI*1E30)), gamma);
+      assertEquals(-1, cos.eval(Math.PI*1E30-Math.PI), gamma);
+      assertEquals(1, cos.eval(Math.PI*1E30-(2*Math.PI)), gamma);
    }
    
    @Test

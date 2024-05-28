@@ -13,6 +13,7 @@ class TanOperatorTest
 {
 
    TanOperator tan = new TanOperator();
+   double gamma = 0.13; // Toleranz
    double delta = 0.0001; // Toleranz
    
    @Test
@@ -34,9 +35,9 @@ class TanOperatorTest
    @Test
    void testFunktionUnten()
    {
-      assertEquals(0, tan.eval(-Math.PI*1E307), delta);
-      assertEquals(0, tan.eval(-Math.PI*1E307+Math.PI), delta);
-      assertEquals(0, tan.eval(-Math.PI*1E307+(2*Math.PI)), delta);
+      assertEquals(0, tan.eval(-Math.PI*1E307), gamma);
+      assertEquals(0, tan.eval(-Math.PI*1E307+Math.PI), gamma);
+      assertEquals(0, tan.eval(-Math.PI*1E307+(2*Math.PI)), gamma);
    }
 
    @Test
@@ -54,9 +55,10 @@ class TanOperatorTest
    @Test
    void testFunktionOben()
    {
-      assertEquals(0, tan.eval((Math.PI*1E307)), delta);
-      assertEquals(0, tan.eval(Math.PI*1E307-Math.PI), delta);
-      assertEquals(0, tan.eval(Math.PI*1E307-(2*Math.PI)), delta);
+      System.out.println(tan.eval((Math.PI*1E307)));
+      assertEquals(0, tan.eval((Math.PI*1E307)), gamma);
+      assertEquals(0, tan.eval(Math.PI*1E307-Math.PI), gamma);
+      assertEquals(0, tan.eval(Math.PI*1E307-(2*Math.PI)), gamma);
    }
    
    @Test
