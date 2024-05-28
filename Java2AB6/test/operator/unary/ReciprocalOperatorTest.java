@@ -16,11 +16,79 @@ class ReciprocalOperatorTest
    ReciprocalOperator rec = new ReciprocalOperator();
    
    @Test
+   void testGrenzeUnten()
+   {
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(-Double.MAX_VALUE);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(-Double.MAX_VALUE+1);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(-Double.MAX_VALUE+2);
+         }
+      });
+   }
+   
+   @Test
+   void testUebergangUnten()
+   {
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(Math.pow(-2, 53));
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(Math.pow(-2, 53)-1);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(Math.pow(-2, 53)-2);
+         }
+      });
+   }
+   
+   @Test
    void testFunktionUnten()
    {
-      assertEquals(1/-Double.MAX_VALUE, rec.eval(-Double.MAX_VALUE));
-      assertEquals(1/(-Double.MAX_VALUE+1), rec.eval(-Double.MAX_VALUE+1));
-      assertEquals(1/(-Double.MAX_VALUE+2), rec.eval(-Double.MAX_VALUE+2));
+      assertEquals(1/(Math.pow(-2, 53)+1), rec.eval(Math.pow(-2, 53)+1));
+      assertEquals(1/(Math.pow(-2, 53)+2), rec.eval(Math.pow(-2, 53)+2));
+      assertEquals(1/(Math.pow(-2, 53)+3), rec.eval(Math.pow(-2, 53)+3));
    }
    
    @Test
@@ -185,17 +253,114 @@ class ReciprocalOperatorTest
       assertEquals(1/(double)3, rec.eval(3));
    }
    
+   @Test
    void testFunktionOben()
    {
-      assertEquals(1/(Double.MAX_VALUE-2), rec.eval(Double.MAX_VALUE-2));
-      assertEquals(1/(Double.MAX_VALUE-1), rec.eval(Double.MAX_VALUE-1));
-      assertEquals(1/Double.MAX_VALUE, rec.eval(Double.MAX_VALUE));
+      assertEquals(1/(Math.pow(2, 53)-1), rec.eval(Math.pow(2, 53)-1));
+      assertEquals(1/(Math.pow(2, 53)-2), rec.eval(Math.pow(2, 53)-2));
+      assertEquals(1/(Math.pow(2, 53)-3), rec.eval(Math.pow(2, 53)-3));
+   }
+   
+   @Test
+   void testUebergangOben()
+   {
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(Math.pow(2, 53));
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(Math.pow(2, 53)+1);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(Math.pow(2, 53)+2);
+         }
+      });
+   }
+   
+   @Test
+   void testGrenzeOben()
+   {
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(Double.MAX_VALUE);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(Double.MAX_VALUE-1);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(Double.MAX_VALUE-2);
+         }
+      });
    }
    
    @Test
    void testSonderfall()
    {
-      assertEquals(Double.NaN, rec.eval(Double.NaN));
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(Double.POSITIVE_INFINITY);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(Double.NEGATIVE_INFINITY);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            rec.eval(Double.NaN);
+         }
+      });
    }
 
 }

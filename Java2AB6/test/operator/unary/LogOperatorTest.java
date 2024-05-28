@@ -81,6 +81,16 @@ class LogOperatorTest
             log.eval(-1);
          }
       });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            log.eval(0);
+         }
+      });
    }
    
    @Test
@@ -144,15 +154,111 @@ class LogOperatorTest
    @Test
    void testFunktionOben()
    {
-      assertEquals(708.8, log.eval(Math.exp(708.8)));
-      assertEquals(708.9, log.eval(Math.exp(708.9)));
-      assertEquals(709, log.eval(Math.exp(709)));
+      assertEquals(36.5, log.eval(Math.exp(36.5)));
+      assertEquals(36.6, log.eval(Math.exp(36.6)));
+      assertEquals(36.7, log.eval(Math.exp(36.7)));
+   }
+   
+   @Test
+   void testUbergangOben()
+   {
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            log.eval(Math.exp(37));
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            log.eval(Math.exp(38));
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            log.eval(Math.exp(39));
+         }
+      });
+   }
+   
+   @Test
+   void testGrenzeOben()
+   {
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            log.eval(Double.MAX_VALUE);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            log.eval(Double.MAX_VALUE - 1);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            log.eval(Double.MAX_VALUE - 2);
+         }
+      });
    }
    
    @Test
    void testSonderfall()
    {
-      assertEquals(Double.NaN, log.eval(Double.NaN));
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            log.eval(Double.POSITIVE_INFINITY);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            log.eval(Double.NEGATIVE_INFINITY);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            log.eval(Double.NaN);
+         }
+      });
    }
 
 }

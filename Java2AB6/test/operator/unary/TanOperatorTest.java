@@ -3,6 +3,7 @@ package operator.unary;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 /**
  * Testet den Tangens-Operator.
@@ -15,6 +16,74 @@ class TanOperatorTest
    TanOperator tan = new TanOperator();
    double gamma = 0.13; // Toleranz
    double delta = 0.0001; // Toleranz
+   
+   @Test
+   void testGrenzeUnten()
+   {
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            tan.eval(-Double.MAX_VALUE);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            tan.eval(-Double.MAX_VALUE+1);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            tan.eval(-Double.MAX_VALUE+2);
+         }
+      });
+   }
+   
+   @Test
+   void testUebergangUnten()
+   {
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            tan.eval(Math.pow(-2, 53));
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            tan.eval(Math.pow(-2, 53)-1);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            tan.eval(Math.pow(-2, 53)-2);
+         }
+      });
+   }
    
    @Test
    void testGrenzeNullNegativ()
@@ -35,9 +104,9 @@ class TanOperatorTest
    @Test
    void testFunktionUnten()
    {
-      assertEquals(0, tan.eval(-Math.PI*1E307), gamma);
-      assertEquals(0, tan.eval(-Math.PI*1E307+Math.PI), gamma);
-      assertEquals(0, tan.eval(-Math.PI*1E307+(2*Math.PI)), gamma);
+      assertEquals(0, tan.eval(-Math.PI*1E15), gamma);
+      assertEquals(0, tan.eval(-Math.PI*1E15+Math.PI), gamma);
+      assertEquals(0, tan.eval(-Math.PI*1E15+(2*Math.PI)), gamma);
    }
 
    @Test
@@ -55,15 +124,110 @@ class TanOperatorTest
    @Test
    void testFunktionOben()
    {
-      System.out.println(tan.eval((Math.PI*1E307)));
-      assertEquals(0, tan.eval((Math.PI*1E307)), gamma);
-      assertEquals(0, tan.eval(Math.PI*1E307-Math.PI), gamma);
-      assertEquals(0, tan.eval(Math.PI*1E307-(2*Math.PI)), gamma);
+      assertEquals(0, tan.eval((Math.PI*1E15)), gamma);
+      assertEquals(0, tan.eval(Math.PI*1E15-Math.PI), gamma);
+      assertEquals(0, tan.eval(Math.PI*1E15-(2*Math.PI)), gamma);
+   }
+   
+   @Test
+   void testUebergangOben()
+   {
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            tan.eval(Math.pow(2, 53));
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            tan.eval(Math.pow(2, 53)+1);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            tan.eval(Math.pow(2, 53)+2);
+         }
+      });
+   }
+   
+   @Test
+   void testGrenzeOben()
+   {
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            tan.eval(Double.MAX_VALUE);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            tan.eval(Double.MAX_VALUE-1);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            tan.eval(Double.MAX_VALUE-2);
+         }
+      });
    }
    
    @Test
    void testSonderfall()
    {
-      assertEquals(Double.NaN, tan.eval(Double.NaN));
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            tan.eval(Double.POSITIVE_INFINITY);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            tan.eval(Double.NEGATIVE_INFINITY);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            tan.eval(Double.NaN);
+         }
+      });
    }
 }

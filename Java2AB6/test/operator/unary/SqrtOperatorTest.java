@@ -128,31 +128,127 @@ class SqrtOperatorTest
    @Test
    void testFunktionUnten()
    {
+      assertEquals(1E-6, sqrt.eval(1E-6*1E-6));
+      assertEquals(1E-7, sqrt.eval(1E-7*1E-7));
+      assertEquals(1E-8, sqrt.eval(1E-8*1E-8));
+   }
+   
+   @Test
+   void testFunktionMitte()
+   {
       assertEquals(0, sqrt.eval(0));
       assertEquals(1, sqrt.eval(1));
       assertEquals(2, sqrt.eval(4));
    }
    
    @Test
-   void testFunktionMitte()
+   void testFunktionOben()
    {
-      assertEquals(1E149, sqrt.eval(1E149*1E149));
-      assertEquals(1E150, sqrt.eval(1E150*1E150));
-      assertEquals(1E151, sqrt.eval(1E151*1E151));
+      assertEquals(1E5, sqrt.eval(1E5*1E5));
+      assertEquals(1E6, sqrt.eval(1E6*1E6));
+      assertEquals(1E7, sqrt.eval(1E7*1E7));
    }
    
    @Test
-   void testFunktionOben()
+   void testUebergangOben()
    {
-      assertEquals(1E152, sqrt.eval(1E152*1E152));
-      assertEquals(1E153, sqrt.eval(1E153*1E153));
-      assertEquals(1E154, sqrt.eval(1E154*1E154));
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            sqrt.eval(Math.pow(2, 53));
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            sqrt.eval(Math.pow(2, 53)+1);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            sqrt.eval(Math.pow(2, 53)+2);
+         }
+      });
+   }
+   
+   @Test
+   void testGrenzeOben()
+   {
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            sqrt.eval(Double.MAX_VALUE);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            sqrt.eval(Double.MAX_VALUE-1);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            sqrt.eval(Double.MAX_VALUE-2);
+         }
+      });
    }
    
    @Test
    void testSonderfall()
    {
-      assertEquals(Double.NaN, sqrt.eval(Double.NaN));
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            sqrt.eval(Double.POSITIVE_INFINITY);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            sqrt.eval(Double.NEGATIVE_INFINITY);
+         }
+      });
+      
+      assertThrows(IllegalArgumentException.class, new Executable()
+      {
+
+         @Override
+         public void execute() throws Throwable
+         {
+            sqrt.eval(Double.NaN);
+         }
+      });
    }
 
 }
