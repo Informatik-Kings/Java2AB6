@@ -1,7 +1,9 @@
 package operator.unary;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
@@ -13,8 +15,9 @@ import org.junit.jupiter.api.function.Executable;
 class ReciprocalOperatorTest
 {
 
-   ReciprocalOperator rec = new ReciprocalOperator();
+   private static ReciprocalOperator rec = new ReciprocalOperator();
    
+   @DisplayName("Teste Grenze Unten")
    @Test
    void testGrenzeUnten()
    {
@@ -49,6 +52,7 @@ class ReciprocalOperatorTest
       });
    }
    
+   @DisplayName("Teste Grenze Unten Übergang")
    @Test
    void testUebergangUnten()
    {
@@ -82,7 +86,8 @@ class ReciprocalOperatorTest
          }
       });
    }
-   
+
+   @DisplayName("Teste Funktion Unten")
    @Test
    void testFunktionUnten()
    {
@@ -91,6 +96,7 @@ class ReciprocalOperatorTest
       assertEquals(1/(Math.pow(-2, 53)+3), rec.eval(Math.pow(-2, 53)+3));
    }
    
+   @DisplayName("Teste Funktion Mitte")
    @Test
    void testFunktionMitteUnten()
    {
@@ -99,6 +105,7 @@ class ReciprocalOperatorTest
       assertEquals(-1, rec.eval(-1));
    }
 
+   @DisplayName("Teste Mitte Unten Übergang")
    @Test
    void testUebergangMitteUnten()
    {
@@ -133,6 +140,7 @@ class ReciprocalOperatorTest
       });
    }
    
+   @DisplayName("Teste Grenze Null Negativ")
    @Test
    void testGrenzeNullNegativ()
    {
@@ -167,6 +175,7 @@ class ReciprocalOperatorTest
       });
    }
    
+   @DisplayName("Teste Grenze Null Positiv")
    @Test
    void testGrenzeNullPositiv()
    {
@@ -201,6 +210,7 @@ class ReciprocalOperatorTest
       });
    }
 
+   @DisplayName("Teste Mitte Oben Übergang")
    @Test
    void testUebergangMitteOben()
    {
@@ -245,6 +255,7 @@ class ReciprocalOperatorTest
       });
    }
    
+   @DisplayName("Teste Funktion Mitte Oben")
    @Test
    void testFunktionMitteOben()
    {
@@ -253,6 +264,7 @@ class ReciprocalOperatorTest
       assertEquals(1/(double)3, rec.eval(3));
    }
    
+   @DisplayName("Teste Funktion Oben")
    @Test
    void testFunktionOben()
    {
@@ -261,6 +273,7 @@ class ReciprocalOperatorTest
       assertEquals(1/(Math.pow(2, 53)-3), rec.eval(Math.pow(2, 53)-3));
    }
    
+   @DisplayName("Teste Grenze Oben Übergang")
    @Test
    void testUebergangOben()
    {
@@ -295,6 +308,7 @@ class ReciprocalOperatorTest
       });
    }
    
+   @DisplayName("Teste Grenze Oben")
    @Test
    void testGrenzeOben()
    {
@@ -329,6 +343,7 @@ class ReciprocalOperatorTest
       });
    }
    
+   @DisplayName("Teste Sonderfall")
    @Test
    void testSonderfall()
    {

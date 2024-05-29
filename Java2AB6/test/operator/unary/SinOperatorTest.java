@@ -1,7 +1,9 @@
 package operator.unary;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
@@ -12,10 +14,11 @@ import org.junit.jupiter.api.function.Executable;
  */
 class SinOperatorTest
 {
-   SinOperator sin = new SinOperator();
-   double gamma = 0.13; // Toleranz
-   double delta = 0.0001; // Toleranz
+   private static SinOperator sin = new SinOperator();
+   private final static double GAMMA = 0.13; // Toleranz
+   private final static double DELTA = 0.0001; // Toleranz
    
+   @DisplayName("Teste Grenze Unten")
    @Test
    void testGrenzeUnten()
    {
@@ -50,6 +53,7 @@ class SinOperatorTest
       });
    }
    
+   @DisplayName("Teste Grenze Unten Übergang")
    @Test
    void testUebergangUnten()
    {
@@ -84,6 +88,7 @@ class SinOperatorTest
       });
    }
  
+   @DisplayName("Teste Grenze Null Negativ")
    @Test
    void testGrenzeNullNegativ()
    {
@@ -92,6 +97,7 @@ class SinOperatorTest
       assertEquals(-Double.MIN_VALUE*3, sin.eval(-Double.MIN_VALUE*3));
    }
    
+   @DisplayName("Teste Grenze Null Positiv")
    @Test
    void testGrenzeNullPositiv()
    {
@@ -100,36 +106,40 @@ class SinOperatorTest
       assertEquals(Double.MIN_VALUE*3, sin.eval(Double.MIN_VALUE*3));
    }
 
+   @DisplayName("Teste Funktion Unten")
    @Test
    void testFunktionUnten()
    {
-      assertEquals(0, sin.eval(-Math.PI*1E15), gamma);
-      assertEquals(0, sin.eval(-Math.PI*1E15+Math.PI), gamma);
-      assertEquals(0, sin.eval(-(Math.PI*1E15+(2*Math.PI))), gamma);
+      assertEquals(0, sin.eval(-Math.PI*1E15), GAMMA);
+      assertEquals(0, sin.eval(-Math.PI*1E15+Math.PI), GAMMA);
+      assertEquals(0, sin.eval(-(Math.PI*1E15+(2*Math.PI))), GAMMA);
    }
 
+   @DisplayName("Teste Funktion Mitte")
    @Test
    void testFunktionMitte()
    {
-      assertEquals(0, sin.eval(Math.toRadians(-180)), delta);
-      assertEquals(-0.5, sin.eval(Math.toRadians(-150)), delta);
-      assertEquals(-1, sin.eval(Math.toRadians(-90)), delta);
-      assertEquals(-0.5, sin.eval(Math.toRadians(-30)), delta);
-      assertEquals(0, sin.eval(Math.toRadians(0)), delta);
-      assertEquals(0.5, sin.eval(Math.toRadians(30)), delta);
-      assertEquals(1, sin.eval(Math.toRadians(90)), delta);
-      assertEquals(0.5, sin.eval(Math.toRadians(150)), delta);
-      assertEquals(0, sin.eval(Math.toRadians(180)), delta);
+      assertEquals(0, sin.eval(Math.toRadians(-180)), DELTA);
+      assertEquals(-0.5, sin.eval(Math.toRadians(-150)), DELTA);
+      assertEquals(-1, sin.eval(Math.toRadians(-90)), DELTA);
+      assertEquals(-0.5, sin.eval(Math.toRadians(-30)), DELTA);
+      assertEquals(0, sin.eval(Math.toRadians(0)), DELTA);
+      assertEquals(0.5, sin.eval(Math.toRadians(30)), DELTA);
+      assertEquals(1, sin.eval(Math.toRadians(90)), DELTA);
+      assertEquals(0.5, sin.eval(Math.toRadians(150)), DELTA);
+      assertEquals(0, sin.eval(Math.toRadians(180)), DELTA);
    }
 
+   @DisplayName("Teste Funktion Oben")
    @Test
    void testFunktionOben()
    {
-      assertEquals(0, sin.eval(Math.PI*1E15), gamma);
-      assertEquals(0, sin.eval(Math.PI*1E15-Math.PI), gamma);
-      assertEquals(0, sin.eval(Math.PI*1E15+(2*Math.PI)), gamma);
+      assertEquals(0, sin.eval(Math.PI*1E15), GAMMA);
+      assertEquals(0, sin.eval(Math.PI*1E15-Math.PI), GAMMA);
+      assertEquals(0, sin.eval(Math.PI*1E15+(2*Math.PI)), GAMMA);
    }
    
+   @DisplayName("Teste Grenze Oben Übergang")
    @Test
    void testUebergangOben()
    {
@@ -164,6 +174,7 @@ class SinOperatorTest
       });
    }
    
+   @DisplayName("Teste Grenze Oben")
    @Test
    void testGrenzeOben()
    {
@@ -198,6 +209,7 @@ class SinOperatorTest
       });
    }
    
+   @DisplayName("Teste Sonderfall")
    @Test
    void testSonderfall()
    {

@@ -1,7 +1,9 @@
 package operator.unary;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
@@ -12,8 +14,9 @@ import org.junit.jupiter.api.function.Executable;
  */
 class LogOperatorTest
 {
-   LogOperator log = new LogOperator();
+   private static LogOperator log = new LogOperator();
 
+   @DisplayName("Teste Grenze Unten")
    @Test
    void testGrenzeUnten()
    {
@@ -49,6 +52,7 @@ class LogOperatorTest
       });
    }
 
+   @DisplayName("Teste Grenze Unten Übergang")
    @Test
    void testUebergangUnten()
    {
@@ -93,6 +97,7 @@ class LogOperatorTest
       });
    }
    
+   @DisplayName("Teste Grenze Null Negativ")
    @Test
    void testGrenzeNullNegativ()
    {
@@ -127,6 +132,7 @@ class LogOperatorTest
       });
    }
    
+   @DisplayName("Teste Grenze Null Positiv")
    @Test
    void testGrenzeNullPositiv()
    {
@@ -135,6 +141,7 @@ class LogOperatorTest
       assertEquals(-743.3414596327132, log.eval(Double.MIN_VALUE*3));
    }
 
+   @DisplayName("Teste Funktion Unten")
    @Test
    void testFunktionUnten()
    {
@@ -143,6 +150,7 @@ class LogOperatorTest
       assertEquals(-709, log.eval(Math.exp(-709)));
    }
 
+   @DisplayName("Teste Funktion Mitte")
    @Test
    void testFunktionMitte()
    {
@@ -151,6 +159,7 @@ class LogOperatorTest
       assertEquals(2, log.eval(Math.exp(2)));
    }
 
+   @DisplayName("Teste Funktion Oben")
    @Test
    void testFunktionOben()
    {
@@ -159,6 +168,7 @@ class LogOperatorTest
       assertEquals(36.7, log.eval(Math.exp(36.7)));
    }
    
+   @DisplayName("Teste Grenze Oben Übergang")
    @Test
    void testUbergangOben()
    {
@@ -193,6 +203,7 @@ class LogOperatorTest
       });
    }
    
+   @DisplayName("Teste Grenze Oben")
    @Test
    void testGrenzeOben()
    {
@@ -227,6 +238,7 @@ class LogOperatorTest
       });
    }
    
+   @DisplayName("Teste Sonderfall")
    @Test
    void testSonderfall()
    {

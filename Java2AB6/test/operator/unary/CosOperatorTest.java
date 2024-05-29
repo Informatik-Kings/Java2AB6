@@ -2,6 +2,7 @@ package operator.unary;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
@@ -13,10 +14,11 @@ import org.junit.jupiter.api.function.Executable;
 class CosOperatorTest
 {
 
-   CosOperator cos = new CosOperator();
-   double gamma = 0.01; // Toleranz
-   double delta = 0.0001; // Toleranz
+   private static CosOperator cos = new CosOperator();
+   private final static double GAMMA = 0.01; // Toleranz
+   private final static double DELTA = 0.0001; // Toleranz
    
+   @DisplayName("Teste Grenze Unten")
    @Test
    void testGrenzeUnten()
    {
@@ -51,6 +53,7 @@ class CosOperatorTest
       });
    }
    
+   @DisplayName("Teste Grenze Unten Übergang")
    @Test
    void testUebergangUnten()
    {
@@ -85,6 +88,7 @@ class CosOperatorTest
       });
    }
    
+   @DisplayName("Teste Grenze Null Negativ")
    @Test
    void testGrenzeNullNegativ()
    {
@@ -93,6 +97,7 @@ class CosOperatorTest
       assertEquals(1, cos.eval(-Double.MIN_VALUE*3));
    }
    
+   @DisplayName("Teste Grenze Null Positiv")
    @Test
    void testGrenzeNullPositiv()
    {
@@ -101,36 +106,40 @@ class CosOperatorTest
       assertEquals(1, cos.eval(Double.MIN_VALUE*3));
    }
 
+   @DisplayName("Teste Funktion Unten")
    @Test
    void testFunktionUnten()
    {
-      assertEquals(1, cos.eval(-Math.PI*1E15), gamma);
-      assertEquals(-1, cos.eval(-Math.PI*1E15+Math.PI), gamma);
-      assertEquals(1, cos.eval(-(Math.PI*1E15+(2*Math.PI))), gamma);
+      assertEquals(1, cos.eval(-Math.PI*1E15), GAMMA);
+      assertEquals(-1, cos.eval(-Math.PI*1E15+Math.PI), GAMMA);
+      assertEquals(1, cos.eval(-(Math.PI*1E15+(2*Math.PI))), GAMMA);
    }
 
+   @DisplayName("Teste Funktion Mitte")
    @Test
    void testFunktionMitte()
    {
-      assertEquals(-1, cos.eval(Math.toRadians(-180)), delta);
-      assertEquals(-0.5, cos.eval(Math.toRadians(-120)), delta);
-      assertEquals(0, cos.eval(Math.toRadians(-90)), delta);
-      assertEquals(0.5, cos.eval(Math.toRadians(-60)), delta);
-      assertEquals(1, cos.eval(Math.toRadians(0)), delta);
-      assertEquals(0.5, cos.eval(Math.toRadians(60)), delta);
-      assertEquals(0, cos.eval(Math.toRadians(90)), delta);
-      assertEquals(-0.5, cos.eval(Math.toRadians(120)), delta);
-      assertEquals(-1, cos.eval(Math.toRadians(180)), delta);
+      assertEquals(-1, cos.eval(Math.toRadians(-180)), DELTA);
+      assertEquals(-0.5, cos.eval(Math.toRadians(-120)), DELTA);
+      assertEquals(0, cos.eval(Math.toRadians(-90)), DELTA);
+      assertEquals(0.5, cos.eval(Math.toRadians(-60)), DELTA);
+      assertEquals(1, cos.eval(Math.toRadians(0)), DELTA);
+      assertEquals(0.5, cos.eval(Math.toRadians(60)), DELTA);
+      assertEquals(0, cos.eval(Math.toRadians(90)), DELTA);
+      assertEquals(-0.5, cos.eval(Math.toRadians(120)), DELTA);
+      assertEquals(-1, cos.eval(Math.toRadians(180)), DELTA);
    }
 
+   @DisplayName("Teste Funktion Oben")
    @Test
    void testFunktionOben()
    {
-      assertEquals(1, cos.eval((Math.PI*1E15)), gamma);
-      assertEquals(-1, cos.eval(Math.PI*1E15-Math.PI), gamma);
-      assertEquals(1, cos.eval(Math.PI*1E15+(2*Math.PI)), gamma);
+      assertEquals(1, cos.eval((Math.PI*1E15)), GAMMA);
+      assertEquals(-1, cos.eval(Math.PI*1E15-Math.PI), GAMMA);
+      assertEquals(1, cos.eval(Math.PI*1E15+(2*Math.PI)), GAMMA);
    }
    
+   @DisplayName("Teste Grenze Oben Übergang")
    @Test
    void testUebergangOben()
    {
@@ -165,6 +174,7 @@ class CosOperatorTest
       });
    }
    
+   @DisplayName("Teste Grenze Oben")
    @Test
    void testGrenzeOben()
    {
@@ -199,6 +209,7 @@ class CosOperatorTest
       });
    }
    
+   @DisplayName("Teste Sonderfall")
    @Test
    void testSonderfall()
    {

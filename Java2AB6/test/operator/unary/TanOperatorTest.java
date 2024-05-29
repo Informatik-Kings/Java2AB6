@@ -2,6 +2,7 @@ package operator.unary;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
@@ -13,10 +14,11 @@ import org.junit.jupiter.api.function.Executable;
 class TanOperatorTest
 {
 
-   TanOperator tan = new TanOperator();
-   double gamma = 0.13; // Toleranz
-   double delta = 0.0001; // Toleranz
+   private static TanOperator tan = new TanOperator();
+   private final static double GAMMA = 0.13; // Toleranz
+   private final static double DELTA = 0.0001; // Toleranz
    
+   @DisplayName("Teste Grenze Unten")
    @Test
    void testGrenzeUnten()
    {
@@ -51,6 +53,7 @@ class TanOperatorTest
       });
    }
    
+   @DisplayName("Teste Grenze Unten Übergang")
    @Test
    void testUebergangUnten()
    {
@@ -85,6 +88,7 @@ class TanOperatorTest
       });
    }
    
+   @DisplayName("Teste Grenze Null Negativ")
    @Test
    void testGrenzeNullNegativ()
    {
@@ -93,6 +97,7 @@ class TanOperatorTest
       assertEquals(-Double.MIN_VALUE*3, tan.eval(-Double.MIN_VALUE*3));
    }
    
+   @DisplayName("Teste Grenze Null Positiv")
    @Test
    void testGrenzeNullPositiv()
    {
@@ -101,34 +106,38 @@ class TanOperatorTest
       assertEquals(Double.MIN_VALUE*3, tan.eval(Double.MIN_VALUE*3));
    }
 
+   @DisplayName("Teste Funktion Unten")
    @Test
    void testFunktionUnten()
    {
-      assertEquals(0, tan.eval(-Math.PI*1E15), gamma);
-      assertEquals(0, tan.eval(-Math.PI*1E15+Math.PI), gamma);
-      assertEquals(0, tan.eval(-(Math.PI*1E15+(2*Math.PI))), gamma);
+      assertEquals(0, tan.eval(-Math.PI*1E15), GAMMA);
+      assertEquals(0, tan.eval(-Math.PI*1E15+Math.PI), GAMMA);
+      assertEquals(0, tan.eval(-(Math.PI*1E15+(2*Math.PI))), GAMMA);
    }
 
+   @DisplayName("Teste Funktion Mitte")
    @Test
    void testFunktionMitte()
    {
-      assertEquals(-1, tan.eval(Math.toRadians(-225)), delta);
-      assertEquals(-0, tan.eval(Math.toRadians(-180)), delta);
-      assertEquals(-1, tan.eval(Math.toRadians(-45)), delta);
-      assertEquals(0, tan.eval(Math.toRadians(0)), delta);
-      assertEquals(1, tan.eval(Math.toRadians(45)), delta);
-      assertEquals(0, tan.eval(Math.toRadians(180)), delta);
-      assertEquals(1, tan.eval(Math.toRadians(225)), delta);
+      assertEquals(-1, tan.eval(Math.toRadians(-225)), DELTA);
+      assertEquals(-0, tan.eval(Math.toRadians(-180)), DELTA);
+      assertEquals(-1, tan.eval(Math.toRadians(-45)), DELTA);
+      assertEquals(0, tan.eval(Math.toRadians(0)), DELTA);
+      assertEquals(1, tan.eval(Math.toRadians(45)), DELTA);
+      assertEquals(0, tan.eval(Math.toRadians(180)), DELTA);
+      assertEquals(1, tan.eval(Math.toRadians(225)), DELTA);
    }
 
+   @DisplayName("Teste Funktion Oben")
    @Test
    void testFunktionOben()
    {
-      assertEquals(0, tan.eval((Math.PI*1E15)), gamma);
-      assertEquals(0, tan.eval(Math.PI*1E15-Math.PI), gamma);
-      assertEquals(0, tan.eval((Math.PI*1E15)+(2*Math.PI)), gamma);
+      assertEquals(0, tan.eval((Math.PI*1E15)), GAMMA);
+      assertEquals(0, tan.eval(Math.PI*1E15-Math.PI), GAMMA);
+      assertEquals(0, tan.eval((Math.PI*1E15)+(2*Math.PI)), GAMMA);
    }
    
+   @DisplayName("Teste Grenze Oben Übergang")
    @Test
    void testUebergangOben()
    {
@@ -163,6 +172,7 @@ class TanOperatorTest
       });
    }
    
+   @DisplayName("Teste Grenze Oben")
    @Test
    void testGrenzeOben()
    {
@@ -197,6 +207,7 @@ class TanOperatorTest
       });
    }
    
+   @DisplayName("Teste Sonderfall")
    @Test
    void testSonderfall()
    {
