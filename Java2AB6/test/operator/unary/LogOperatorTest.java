@@ -20,7 +20,7 @@ class LogOperatorTest
    @Test
    void testGrenzeUnten()
    {
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -85,7 +85,7 @@ class LogOperatorTest
             log.eval(-1);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -96,7 +96,7 @@ class LogOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Grenze Null Negativ")
    @Test
    void testGrenzeNullNegativ()
@@ -131,7 +131,7 @@ class LogOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Grenze Null Positiv")
    @Test
    void testGrenzeNullPositiv()
@@ -167,7 +167,7 @@ class LogOperatorTest
       assertEquals(36.6, log.eval(Math.exp(36.6)));
       assertEquals(36.7, log.eval(Math.exp(36.7)));
    }
-   
+
    @DisplayName("Teste Grenze Oben Übergang")
    @Test
    void testUbergangOben()
@@ -181,7 +181,7 @@ class LogOperatorTest
             log.eval(Math.exp(37));
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -191,7 +191,7 @@ class LogOperatorTest
             log.eval(Math.exp(38));
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -202,7 +202,7 @@ class LogOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Grenze Oben")
    @Test
    void testGrenzeOben()
@@ -216,7 +216,7 @@ class LogOperatorTest
             log.eval(Double.MAX_VALUE);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -226,7 +226,7 @@ class LogOperatorTest
             log.eval(Double.MAX_VALUE - 1);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -237,7 +237,7 @@ class LogOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Sonderfall")
    @Test
    void testSonderfall()
@@ -251,7 +251,7 @@ class LogOperatorTest
             log.eval(Double.POSITIVE_INFINITY);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -261,7 +261,7 @@ class LogOperatorTest
             log.eval(Double.NEGATIVE_INFINITY);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 

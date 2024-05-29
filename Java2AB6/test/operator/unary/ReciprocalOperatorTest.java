@@ -16,7 +16,7 @@ class ReciprocalOperatorTest
 {
 
    private static ReciprocalOperator rec = new ReciprocalOperator();
-   
+
    @DisplayName("Teste Grenze Unten")
    @Test
    void testGrenzeUnten()
@@ -30,7 +30,7 @@ class ReciprocalOperatorTest
             rec.eval(-Double.MAX_VALUE);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -40,7 +40,7 @@ class ReciprocalOperatorTest
             rec.eval(-Double.MAX_VALUE+1);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -51,7 +51,7 @@ class ReciprocalOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Grenze Unten Übergang")
    @Test
    void testUebergangUnten()
@@ -65,7 +65,7 @@ class ReciprocalOperatorTest
             rec.eval(Math.pow(-2, 53));
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -75,7 +75,7 @@ class ReciprocalOperatorTest
             rec.eval(Math.pow(-2, 53)-1);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -95,7 +95,7 @@ class ReciprocalOperatorTest
       assertEquals(1/(Math.pow(-2, 53)+2), rec.eval(Math.pow(-2, 53)+2));
       assertEquals(1/(Math.pow(-2, 53)+3), rec.eval(Math.pow(-2, 53)+3));
    }
-   
+
    @DisplayName("Teste Funktion Mitte")
    @Test
    void testFunktionMitteUnten()
@@ -139,7 +139,7 @@ class ReciprocalOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Grenze Null Negativ")
    @Test
    void testGrenzeNullNegativ()
@@ -174,7 +174,7 @@ class ReciprocalOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Grenze Null Positiv")
    @Test
    void testGrenzeNullPositiv()
@@ -254,7 +254,7 @@ class ReciprocalOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Funktion Mitte Oben")
    @Test
    void testFunktionMitteOben()
@@ -263,7 +263,7 @@ class ReciprocalOperatorTest
       assertEquals(0.5, rec.eval(2));
       assertEquals(1/(double)3, rec.eval(3));
    }
-   
+
    @DisplayName("Teste Funktion Oben")
    @Test
    void testFunktionOben()
@@ -272,7 +272,7 @@ class ReciprocalOperatorTest
       assertEquals(1/(Math.pow(2, 53)-2), rec.eval(Math.pow(2, 53)-2));
       assertEquals(1/(Math.pow(2, 53)-3), rec.eval(Math.pow(2, 53)-3));
    }
-   
+
    @DisplayName("Teste Grenze Oben Übergang")
    @Test
    void testUebergangOben()
@@ -286,7 +286,7 @@ class ReciprocalOperatorTest
             rec.eval(Math.pow(2, 53));
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -296,7 +296,7 @@ class ReciprocalOperatorTest
             rec.eval(Math.pow(2, 53)+1);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -307,7 +307,7 @@ class ReciprocalOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Grenze Oben")
    @Test
    void testGrenzeOben()
@@ -321,7 +321,7 @@ class ReciprocalOperatorTest
             rec.eval(Double.MAX_VALUE);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -331,7 +331,7 @@ class ReciprocalOperatorTest
             rec.eval(Double.MAX_VALUE-1);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -342,7 +342,7 @@ class ReciprocalOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Sonderfall")
    @Test
    void testSonderfall()
@@ -356,7 +356,7 @@ class ReciprocalOperatorTest
             rec.eval(Double.POSITIVE_INFINITY);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -366,7 +366,7 @@ class ReciprocalOperatorTest
             rec.eval(Double.NEGATIVE_INFINITY);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 

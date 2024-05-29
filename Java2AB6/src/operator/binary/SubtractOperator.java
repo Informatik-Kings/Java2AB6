@@ -21,12 +21,12 @@ public class SubtractOperator extends BinaryOperator
       if(!Double.isFinite(x) || !Double.isFinite(y)) {
          throw new IllegalUserInputException("SubtractOperator: Zahlen müssen endlich sein.");
       }
-      
+
       if(Math.abs(x) >= MANTISSA_MAX_VALUE.doubleValue() || Math.abs(y) >= MANTISSA_MAX_VALUE.doubleValue()) {         
          throw new IllegalUserInputException(
                "SubtractOperator: Zahlen dürfen höchstens (2^53)-1 ins positive oder negative sein.");
       }
-      
+
       // Ergebnis vorher überprüfen, ob es im Wertebereich liegt
       BigDecimal a = BigDecimal.valueOf(x);
       BigDecimal b = BigDecimal.valueOf(y);
@@ -34,7 +34,7 @@ public class SubtractOperator extends BinaryOperator
       if (result.abs().compareTo(MANTISSA_MAX_VALUE) >= 0) {         
          throw new IllegalUserInputException("SubtractOperator: Ergebnis darf höchstens (2^53)-1 sein.");
       }
-      
+
       return y - x;
    }
 

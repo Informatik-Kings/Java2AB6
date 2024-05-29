@@ -17,7 +17,7 @@ class SinOperatorTest
    private static SinOperator sin = new SinOperator();
    private final static double GAMMA = 0.13; // Toleranz
    private final static double DELTA = 0.0001; // Toleranz
-   
+
    @DisplayName("Teste Grenze Unten")
    @Test
    void testGrenzeUnten()
@@ -31,7 +31,7 @@ class SinOperatorTest
             sin.eval(-Double.MAX_VALUE);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -41,7 +41,7 @@ class SinOperatorTest
             sin.eval(-Double.MAX_VALUE+1);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -52,7 +52,7 @@ class SinOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Grenze Unten Übergang")
    @Test
    void testUebergangUnten()
@@ -66,7 +66,7 @@ class SinOperatorTest
             sin.eval(Math.pow(-2, 53));
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -76,7 +76,7 @@ class SinOperatorTest
             sin.eval(Math.pow(-2, 53)-1);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -87,7 +87,7 @@ class SinOperatorTest
          }
       });
    }
- 
+
    @DisplayName("Teste Grenze Null Negativ")
    @Test
    void testGrenzeNullNegativ()
@@ -96,7 +96,7 @@ class SinOperatorTest
       assertEquals(-Double.MIN_VALUE*2, sin.eval(-Double.MIN_VALUE*2));
       assertEquals(-Double.MIN_VALUE*3, sin.eval(-Double.MIN_VALUE*3));
    }
-   
+
    @DisplayName("Teste Grenze Null Positiv")
    @Test
    void testGrenzeNullPositiv()
@@ -138,7 +138,7 @@ class SinOperatorTest
       assertEquals(0, sin.eval(Math.PI*1E15-Math.PI), GAMMA);
       assertEquals(0, sin.eval(Math.PI*1E15+(2*Math.PI)), GAMMA);
    }
-   
+
    @DisplayName("Teste Grenze Oben Übergang")
    @Test
    void testUebergangOben()
@@ -152,7 +152,7 @@ class SinOperatorTest
             sin.eval(Math.pow(2, 53));
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -162,7 +162,7 @@ class SinOperatorTest
             sin.eval(Math.pow(2, 53)+1);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -173,7 +173,7 @@ class SinOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Grenze Oben")
    @Test
    void testGrenzeOben()
@@ -187,7 +187,7 @@ class SinOperatorTest
             sin.eval(Double.MAX_VALUE);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -197,7 +197,7 @@ class SinOperatorTest
             sin.eval(Double.MAX_VALUE-1);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -208,7 +208,7 @@ class SinOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Sonderfall")
    @Test
    void testSonderfall()
@@ -222,7 +222,7 @@ class SinOperatorTest
             sin.eval(Double.POSITIVE_INFINITY);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -232,7 +232,7 @@ class SinOperatorTest
             sin.eval(Double.NEGATIVE_INFINITY);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 

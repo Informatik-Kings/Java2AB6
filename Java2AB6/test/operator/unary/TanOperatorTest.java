@@ -17,7 +17,7 @@ class TanOperatorTest
    private static TanOperator tan = new TanOperator();
    private final static double GAMMA = 0.13; // Toleranz
    private final static double DELTA = 0.0001; // Toleranz
-   
+
    @DisplayName("Teste Grenze Unten")
    @Test
    void testGrenzeUnten()
@@ -31,7 +31,7 @@ class TanOperatorTest
             tan.eval(-Double.MAX_VALUE);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -41,7 +41,7 @@ class TanOperatorTest
             tan.eval(-Double.MAX_VALUE+1);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -52,7 +52,7 @@ class TanOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Grenze Unten Übergang")
    @Test
    void testUebergangUnten()
@@ -66,7 +66,7 @@ class TanOperatorTest
             tan.eval(Math.pow(-2, 53));
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -76,7 +76,7 @@ class TanOperatorTest
             tan.eval(Math.pow(-2, 53)-1);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -87,7 +87,7 @@ class TanOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Grenze Null Negativ")
    @Test
    void testGrenzeNullNegativ()
@@ -96,7 +96,7 @@ class TanOperatorTest
       assertEquals(-Double.MIN_VALUE*2, tan.eval(-Double.MIN_VALUE*2));
       assertEquals(-Double.MIN_VALUE*3, tan.eval(-Double.MIN_VALUE*3));
    }
-   
+
    @DisplayName("Teste Grenze Null Positiv")
    @Test
    void testGrenzeNullPositiv()
@@ -136,7 +136,7 @@ class TanOperatorTest
       assertEquals(0, tan.eval(Math.PI*1E15-Math.PI), GAMMA);
       assertEquals(0, tan.eval((Math.PI*1E15)+(2*Math.PI)), GAMMA);
    }
-   
+
    @DisplayName("Teste Grenze Oben Übergang")
    @Test
    void testUebergangOben()
@@ -150,7 +150,7 @@ class TanOperatorTest
             tan.eval(Math.pow(2, 53));
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -160,7 +160,7 @@ class TanOperatorTest
             tan.eval(Math.pow(2, 53)+1);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -171,7 +171,7 @@ class TanOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Grenze Oben")
    @Test
    void testGrenzeOben()
@@ -185,7 +185,7 @@ class TanOperatorTest
             tan.eval(Double.MAX_VALUE);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -195,7 +195,7 @@ class TanOperatorTest
             tan.eval(Double.MAX_VALUE-1);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -206,7 +206,7 @@ class TanOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Sonderfall")
    @Test
    void testSonderfall()
@@ -220,7 +220,7 @@ class TanOperatorTest
             tan.eval(Double.POSITIVE_INFINITY);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -230,7 +230,7 @@ class TanOperatorTest
             tan.eval(Double.NEGATIVE_INFINITY);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 

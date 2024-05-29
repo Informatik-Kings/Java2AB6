@@ -51,7 +51,7 @@ class SqrtOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Grenze Unten Übergang")
    @Test
    void testUebergangUnten()
@@ -86,7 +86,7 @@ class SqrtOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Grenze Null Negativ")
    @Test
    void testGrenzeNullNegativ()
@@ -121,7 +121,7 @@ class SqrtOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Grenze Null Positiv")
    @Test
    void testGrenzeNullPositiv()
@@ -130,7 +130,7 @@ class SqrtOperatorTest
       assertEquals(2.0, sqrt.eval(Double.MIN_VALUE+4));
       assertEquals(3.0, sqrt.eval(Double.MIN_VALUE+9));
    }
-   
+
    @DisplayName("Teste Funktion Unten")
    @Test
    void testFunktionUnten()
@@ -139,7 +139,7 @@ class SqrtOperatorTest
       assertEquals(1E-7, sqrt.eval(1E-7*1E-7));
       assertEquals(1E-8, sqrt.eval(1E-8*1E-8));
    }
-   
+
    @DisplayName("Teste Funktion Mitte")
    @Test
    void testFunktionMitte()
@@ -148,7 +148,7 @@ class SqrtOperatorTest
       assertEquals(1, sqrt.eval(1));
       assertEquals(2, sqrt.eval(4));
    }
-   
+
    @DisplayName("Teste Funktion Oben")
    @Test
    void testFunktionOben()
@@ -157,7 +157,7 @@ class SqrtOperatorTest
       assertEquals(1E6, sqrt.eval(1E6*1E6));
       assertEquals(1E7, sqrt.eval(1E7*1E7));
    }
-   
+
    @DisplayName("Teste Grenze Oben Übergang")
    @Test
    void testUebergangOben()
@@ -171,7 +171,7 @@ class SqrtOperatorTest
             sqrt.eval(Math.pow(2, 53));
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -181,7 +181,7 @@ class SqrtOperatorTest
             sqrt.eval(Math.pow(2, 53)+1);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -192,7 +192,7 @@ class SqrtOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Grenze Oben")
    @Test
    void testGrenzeOben()
@@ -206,7 +206,7 @@ class SqrtOperatorTest
             sqrt.eval(Double.MAX_VALUE);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -216,7 +216,7 @@ class SqrtOperatorTest
             sqrt.eval(Double.MAX_VALUE-1);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -227,7 +227,7 @@ class SqrtOperatorTest
          }
       });
    }
-   
+
    @DisplayName("Teste Sonderfall")
    @Test
    void testSonderfall()
@@ -241,7 +241,7 @@ class SqrtOperatorTest
             sqrt.eval(Double.POSITIVE_INFINITY);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 
@@ -251,7 +251,7 @@ class SqrtOperatorTest
             sqrt.eval(Double.NEGATIVE_INFINITY);
          }
       });
-      
+
       assertThrows(IllegalArgumentException.class, new Executable()
       {
 

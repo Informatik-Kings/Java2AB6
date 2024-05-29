@@ -22,16 +22,16 @@ public class DivideOperator extends BinaryOperator
       if(Math.abs(x) < MINIMUM) {
          throw new IllegalUserInputException("DivideOperator: Division durch 0!");
       }
-      
+
       if(!Double.isFinite(x) || !Double.isFinite(y)) {
          throw new IllegalUserInputException("DivideOperator: Zahlen müssen endlich sein.");
       }
-      
+
       if(Math.abs(x) >= MANTISSA_MAX_VALUE.doubleValue() || Math.abs(y) >= MANTISSA_MAX_VALUE.doubleValue()) {         
          throw new IllegalUserInputException(
                "DivideOperator: Zahlen dürfen höchstens (2^53)-1 ins positive oder negative sein.");
       }
-      
+
       // Ergebnis vorher überprüfen, ob es im Wertebereich liegt
       BigDecimal a = BigDecimal.valueOf(x);
       BigDecimal b = BigDecimal.valueOf(y);
@@ -39,7 +39,7 @@ public class DivideOperator extends BinaryOperator
       if (result.abs().compareTo(MANTISSA_MAX_VALUE) >= 0) {         
          throw new IllegalUserInputException("DivideOperator: Ergebnis darf höchstens (2^53)-1 sein.");
       }
-      
+
       return y / x;
    }
 
