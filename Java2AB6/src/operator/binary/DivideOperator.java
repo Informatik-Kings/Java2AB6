@@ -1,6 +1,7 @@
 package operator.binary;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 
 import exception.IllegalUserInputException;
 
@@ -34,7 +35,7 @@ public class DivideOperator extends BinaryOperator
       // Ergebnis vorher überprüfen, ob es im Wertebereich liegt
       BigDecimal a = BigDecimal.valueOf(x);
       BigDecimal b = BigDecimal.valueOf(y);
-      BigDecimal result = b.divide(a);
+      BigDecimal result = b.divide(a, MathContext.DECIMAL64);
       if (result.abs().compareTo(MANTISSA_MAX_VALUE) >= 0) {         
          throw new IllegalUserInputException("DivideOperator: Ergebnis darf höchstens (2^53)-1 sein.");
       }

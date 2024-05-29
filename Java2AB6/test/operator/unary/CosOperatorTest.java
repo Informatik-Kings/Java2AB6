@@ -106,7 +106,7 @@ class CosOperatorTest
    {
       assertEquals(1, cos.eval(-Math.PI*1E15), gamma);
       assertEquals(-1, cos.eval(-Math.PI*1E15+Math.PI), gamma);
-      assertEquals(1, cos.eval(-Math.PI*1E15+(2*Math.PI)), gamma);
+      assertEquals(1, cos.eval(-(Math.PI*1E15+(2*Math.PI))), gamma);
    }
 
    @Test
@@ -128,7 +128,7 @@ class CosOperatorTest
    {
       assertEquals(1, cos.eval((Math.PI*1E15)), gamma);
       assertEquals(-1, cos.eval(Math.PI*1E15-Math.PI), gamma);
-      assertEquals(1, cos.eval(Math.PI*1E15-(2*Math.PI)), gamma);
+      assertEquals(1, cos.eval(Math.PI*1E15+(2*Math.PI)), gamma);
    }
    
    @Test

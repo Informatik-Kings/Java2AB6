@@ -1,6 +1,7 @@
 package operator.binary;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 
 import exception.IllegalUserInputException;
 
@@ -11,6 +12,7 @@ import exception.IllegalUserInputException;
  */
 public class PowOperator extends BinaryOperator
 {
+   public final static double MAX_EXPONENT = 1E9;
    /*
     * (non-Javadoc)
     * @see operator.binary.BinaryOperator#eval(double, double)
@@ -22,17 +24,23 @@ public class PowOperator extends BinaryOperator
          throw new IllegalUserInputException("PowOperator: Zahlen müssen endlich sein.");
       }
       
-      if(Math.abs(x) >= MANTISSA_MAX_VALUE.doubleValue() || Math.abs(y) >= MANTISSA_MAX_VALUE.doubleValue()) {         
+      if(Math.abs(x) >= MANTISSA_MAX_VALUE.doubleValue()) {         
          throw new IllegalUserInputException(
-               "PowOperator: Zahlen dürfen höchstens (2^53)-1 ins positive oder negative sein.");
+               "PowOperator: Basis darf höchstens (2^53)-1 ins positive oder negative sein.");
       }
+      
+      if(Math.abs(y) >= MAX_EXPONENT) {
+         throw new IllegalUserInputException(
+               "PowOperator: Exponent darf höchsten eine Millarde sein.");
+      }   
+      
       
       // Ergebnis vorher überprüfen, ob es im Wertebereich liegt      
       BigDecimal b = BigDecimal.valueOf(y);
       BigDecimal result = null;
       if(x < 0) {
          //y^-x == 1/y^x
-         result = BigDecimal.ONE.divide(b.pow((int)Math.floor(Math.abs(x))));
+         result = BigDecimal.ONE.divide(b.pow((int)Math.floor(Math.abs(x))), MathContext.DECIMAL64);
       } else {
          result = b.pow((int)Math.floor(x));
       }

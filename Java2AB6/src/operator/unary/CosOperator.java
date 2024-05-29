@@ -23,7 +23,7 @@ public class CosOperator extends UnaryOperator
          throw new IllegalUserInputException(
                "CosOperator: Zahlen dürfen höchstens (2^53)-1 ins positive oder negative sein.");
       }
-      return Math.cos(x);
+      return Math.cos(x % (2*Math.PI));
    }
 
 }

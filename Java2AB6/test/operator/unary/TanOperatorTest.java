@@ -106,7 +106,7 @@ class TanOperatorTest
    {
       assertEquals(0, tan.eval(-Math.PI*1E15), gamma);
       assertEquals(0, tan.eval(-Math.PI*1E15+Math.PI), gamma);
-      assertEquals(0, tan.eval(-Math.PI*1E15+(2*Math.PI)), gamma);
+      assertEquals(0, tan.eval(-(Math.PI*1E15+(2*Math.PI))), gamma);
    }
 
    @Test
@@ -126,7 +126,7 @@ class TanOperatorTest
    {
       assertEquals(0, tan.eval((Math.PI*1E15)), gamma);
       assertEquals(0, tan.eval(Math.PI*1E15-Math.PI), gamma);
-      assertEquals(0, tan.eval(Math.PI*1E15-(2*Math.PI)), gamma);
+      assertEquals(0, tan.eval((Math.PI*1E15)+(2*Math.PI)), gamma);
    }
    
    @Test

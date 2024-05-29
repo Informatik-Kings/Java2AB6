@@ -22,7 +22,7 @@ public class SinOperator extends UnaryOperator
          throw new IllegalUserInputException(
                "SinOperator: Zahlen dürfen höchstens (2^53)-1 ins positive oder negative sein.");
       }
-      return Math.sin(x);
+      return Math.sin(x % (2*Math.PI));
    }
 
 }

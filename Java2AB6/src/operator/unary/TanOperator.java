@@ -27,7 +27,7 @@ public class TanOperator extends UnaryOperator
          throw new IllegalUserInputException(
                "TanOperator: Zahlen dürfen höchstens (2^53)-1 ins positive oder negative sein.");
       }
-      return Math.tan(x);
+      return Math.tan(x % Math.PI);
    }
 
 }

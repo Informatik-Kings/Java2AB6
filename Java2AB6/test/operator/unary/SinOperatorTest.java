@@ -105,7 +105,7 @@ class SinOperatorTest
    {
       assertEquals(0, sin.eval(-Math.PI*1E15), gamma);
       assertEquals(0, sin.eval(-Math.PI*1E15+Math.PI), gamma);
-      assertEquals(0, sin.eval(-Math.PI*1E15+(2*Math.PI)), gamma);
+      assertEquals(0, sin.eval(-(Math.PI*1E15+(2*Math.PI))), gamma);
    }
 
    @Test
@@ -127,7 +127,7 @@ class SinOperatorTest
    {
       assertEquals(0, sin.eval(Math.PI*1E15), gamma);
       assertEquals(0, sin.eval(Math.PI*1E15-Math.PI), gamma);
-      assertEquals(0, sin.eval(Math.PI*1E15-(2*Math.PI)), gamma);
+      assertEquals(0, sin.eval(Math.PI*1E15+(2*Math.PI)), gamma);
    }
    
    @Test
