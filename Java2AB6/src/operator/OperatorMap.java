@@ -3,13 +3,13 @@ package operator;
 import java.util.HashMap;
 
 import operator.binary.AddOperator;
-import operator.binary.DivideOperator;
-import operator.binary.MultiplyOperator;
+import operator.binary.DivOperator;
+import operator.binary.MulOperator;
 import operator.binary.PowOperator;
-import operator.binary.SubtractOperator;
+import operator.binary.SubOperator;
 import operator.unary.CosOperator;
 import operator.unary.LogOperator;
-import operator.unary.ReciprocalOperator;
+import operator.unary.InvOperator;
 import operator.unary.SinOperator;
 import operator.unary.SqrtOperator;
 import operator.unary.TanOperator;
@@ -32,14 +32,14 @@ public class OperatorMap
    public OperatorMap()
    {
       map.put("+", new AddOperator());
-      map.put("-", new SubtractOperator());
-      map.put("*", new MultiplyOperator());
-      map.put("/", new DivideOperator());
+      map.put("-", new SubOperator());
+      map.put("*", new MulOperator());
+      map.put("/", new DivOperator());
       map.put("ln", new LogOperator());
       map.put("sin", new SinOperator());
       map.put("cos", new CosOperator());
       map.put("tan", new TanOperator());
-      map.put("rec", new ReciprocalOperator());
+      map.put("rec", new InvOperator());
       map.put("pow", new PowOperator());
       map.put("sqrt", new SqrtOperator());
    }

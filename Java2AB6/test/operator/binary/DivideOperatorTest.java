@@ -14,7 +14,7 @@ import org.junit.jupiter.api.function.Executable;
  */
 class DivideOperatorTest
 {
-   private static DivideOperator div = new DivideOperator();
+   private static DivOperator div = new DivOperator();
    private static final double DELTA = 1e-10;
 
    @DisplayName("Teste Grenze Unten")

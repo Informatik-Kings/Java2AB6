@@ -10,7 +10,7 @@ import exception.IllegalUserInputException;
  *
  * @author Dominik Schwabe, Cheng-Fu Ye, Markus Suchalla.
  */
-public class DivideOperator extends BinaryOperator
+public class DivOperator extends BinaryOperator
 {
    /*
     * (non-Javadoc)

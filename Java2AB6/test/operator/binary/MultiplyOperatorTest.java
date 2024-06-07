@@ -14,7 +14,7 @@ import org.junit.jupiter.api.function.Executable;
  */
 class MultiplyOperatorTest
 {
-   private static MultiplyOperator mul = new MultiplyOperator();
+   private static MulOperator mul = new MulOperator();
    private static final double DELTA = 1e-10;
 
    @DisplayName("Teste Grenze Unten")

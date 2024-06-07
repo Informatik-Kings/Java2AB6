@@ -15,7 +15,7 @@ import org.junit.jupiter.api.function.Executable;
 class ReciprocalOperatorTest
 {
 
-   private static ReciprocalOperator rec = new ReciprocalOperator();
+   private static InvOperator rec = new InvOperator();
 
    @DisplayName("Teste Grenze Unten")
    @Test

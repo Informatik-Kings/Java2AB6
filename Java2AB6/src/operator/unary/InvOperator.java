@@ -10,7 +10,7 @@ import exception.IllegalUserInputException;
  *
  * @author Dominik Schwabe, Cheng-Fu Ye, Markus Suchalla.
  */
-public class ReciprocalOperator extends UnaryOperator
+public class InvOperator extends UnaryOperator
 {
 
    /* (non-Javadoc)

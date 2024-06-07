@@ -15,7 +15,7 @@ import org.junit.jupiter.api.function.Executable;
 class SubtractOperatorTest
 {
 
-   private static SubtractOperator sub = new SubtractOperator();
+   private static SubOperator sub = new SubOperator();
 
    @DisplayName("Teste Grenze Unten")
    @Test
