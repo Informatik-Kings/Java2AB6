@@ -18,11 +18,8 @@ public class SinOperator extends UnaryOperator
       if(!Double.isFinite(x)) {
          throw new IllegalUserInputException("SinOperator: Ungültiger Wert!");
       }
-      if(Math.abs(x) >= MANTISSA_MAX_VALUE.doubleValue()) {         
-         throw new IllegalUserInputException(
-               "SinOperator: Zahlen dürfen höchstens (2^53)-1 ins positive oder negative sein.");
-      }
-      return Math.sin(x % (2*Math.PI));
+      
+      return Math.sin(x);
    }
 
 }

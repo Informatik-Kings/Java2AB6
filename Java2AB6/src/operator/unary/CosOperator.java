@@ -19,11 +19,8 @@ public class CosOperator extends UnaryOperator
       if(!Double.isFinite(x)) {
          throw new IllegalUserInputException("CosOperator: Ungültiger Wert!");
       }
-      if(Math.abs(x) >= MANTISSA_MAX_VALUE.doubleValue()) {         
-         throw new IllegalUserInputException(
-               "CosOperator: Zahlen dürfen höchstens (2^53)-1 ins positive oder negative sein.");
-      }
-      return Math.cos(x % (2*Math.PI));
+
+      return Math.cos(x);
    }
 
 }

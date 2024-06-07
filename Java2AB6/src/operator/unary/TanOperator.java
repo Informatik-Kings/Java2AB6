@@ -17,17 +17,14 @@ public class TanOperator extends UnaryOperator
    protected double eval(double x)
    {
       //tan(x) = sin(x) / cos(x). Wenn Ergebnis von cos(x) = 0, dann ND.
-      if(Math.abs(Math.cos(x)) < MINIMUM) {
+      if(Math.abs(Math.cos(x)) < EPSILON) {
          throw new IllegalUserInputException("TanOperator: Tangens an diesem Punkt nicht definiert!");
       }
       if(!Double.isFinite(x)) {
          throw new IllegalUserInputException("TanOperator: Ungültiger Wert!");
       }
-      if(Math.abs(x) >= MANTISSA_MAX_VALUE.doubleValue()) {         
-         throw new IllegalUserInputException(
-               "TanOperator: Zahlen dürfen höchstens (2^53)-1 ins positive oder negative sein.");
-      }
-      return Math.tan(x % Math.PI);
+      
+      return Math.tan(x);
    }
 
 }

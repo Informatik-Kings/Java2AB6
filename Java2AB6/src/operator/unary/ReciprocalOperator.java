@@ -1,5 +1,8 @@
 package operator.unary;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+
 import exception.IllegalUserInputException;
 
 /**
@@ -16,17 +19,22 @@ public class ReciprocalOperator extends UnaryOperator
    @Override
    protected double eval(double x)
    {
-      if(Math.abs(x) < MINIMUM) {
+      if(Math.abs(x) < EPSILON) {
          throw new IllegalUserInputException("ReciprocalOperator: Division durch 0!");
       }
       if(!Double.isFinite(x)) {
          throw new IllegalUserInputException("ReciprocalOperator: Ungültiger Wert!");
       }
-      if(Math.abs(x) >= MANTISSA_MAX_VALUE.doubleValue()) {         
-         throw new IllegalUserInputException(
-               "ReciprocalOperator: Zahlen dürfen höchstens (2^53)-1 ins positive oder negative sein.");
+
+      // Ergebnis vorher überprüfen, ob es im Wertebereich liegt
+      BigDecimal a = BigDecimal.valueOf(x);
+      BigDecimal result = BigDecimal.ONE.divide(a, MathContext.DECIMAL64);
+      if (result.abs().compareTo(BIG_DECIMAL_DOUBLE_MAX_VALUE) > 0) {         
+         throw new IllegalUserInputException("ReciprocalOperator: Ergebnis > Double.MAX_VALUE!");
       }
-      return 1/x;
+
+      return result.doubleValue();
+      
    }
 
 }

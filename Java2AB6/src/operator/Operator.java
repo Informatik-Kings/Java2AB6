@@ -11,8 +11,8 @@ import stack.Stack;
  */
 public interface Operator
 {
-   public final static double MINIMUM = 1E-12;
-   public final static BigDecimal MANTISSA_MAX_VALUE = BigDecimal.valueOf(Math.pow(2, Double.PRECISION));
+   public final static double EPSILON = 1E-12;
+   public final static BigDecimal BIG_DECIMAL_DOUBLE_MAX_VALUE = BigDecimal.valueOf(Double.MAX_VALUE);
    /**
     * 
     * Stellt eine Berechnungs-Methode für UPN bereit.

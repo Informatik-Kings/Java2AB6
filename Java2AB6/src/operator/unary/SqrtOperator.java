@@ -21,10 +21,7 @@ public class SqrtOperator extends UnaryOperator
       if(!Double.isFinite(x)) {
          throw new IllegalUserInputException("SqrtOperator: Ungültiger Wert!");
       }
-      if(Math.abs(x) >= MANTISSA_MAX_VALUE.doubleValue()) {         
-         throw new IllegalUserInputException(
-               "SqrtOperator: Zahlen dürfen höchstens (2^53)-1 ins positive oder negative sein.");
-      }
+      
       return Math.sqrt(x);
    }
 
